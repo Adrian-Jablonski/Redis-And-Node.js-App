@@ -1,0 +1,81 @@
+- Run redis-cli to start the redis client
+
+SET numb 100 
+
+GET numb    // returns 100
+
+INCR numb   // adds 1 to numb key
+
+GET numb    // returns 101
+
+DECR numb   // subtracts 1 from numb key
+
+EXISTS numb  // returns 1 for true
+EXISTS numb1    // returns 0 for false
+
+DEL numb    // Deleted numb key
+
+GET numb    // returns nil
+
+FLUSHALL    // clears everything
+
+SET server:name someserver
+
+GET server:name     // returns someserver
+
+SET server:port 8000
+
+GET server:port     // returns 8000
+
+SET greeting "Hello"
+
+EXPIRE greeting 50  // Expires greeting key in 50 seconds
+
+TTL greeting    // amount of seconds remaining
+
+SETEX greeting 30 "Hello"   // Sets value and expiration
+
+PERSIST greeting        // Cancels the expiration time
+
+MSET key1 "Hello" key2 "World"  // Sets multiple keys in one line
+
+APPEND key1 " World"        // Appends " World" to key1
+
+RENAME key1 greeting        // Renames key1 to greeting
+
+// **** Lists
+
+LPUSH colors "Blue"     // Inserts at beginning of list
+LPUSH colors "Green"
+LPUSH colors "Red"
+
+LRANGE colors 0 -1      // Returns full list. 1) Red 2) Green 3) Blue
+
+LRANGE colors 1 2       // Returns 1) Green 2) Blue
+
+RPUSH colors Yellow     // Inserts value to end of list
+
+LLEN colors     // returns 4 (length of list)
+
+LPOP colors     // Removes first item of list
+RPOP colors     // Removes last item of list
+
+LINSERT colors BEFORE "Blue" "Orange"   // inserts to middle of list
+
+// ***** Sets
+
+SADD cars "Ford"
+
+SADD cars "Honda"
+
+SADD cars "BMW"
+
+SISMEMBER cars "Ford"       // returns 1 since ford exists
+SISMEMBER cars "Chevy"      // Returns 0 since chevy does not exist
+
+SMEMBERS cars       // Returns list of set
+
+SMOVE cars mycars "Ford"    // Removes Ford from cars and moves into mycars set
+
+SREM cars "BMW"     // Removes a member of the set
+
